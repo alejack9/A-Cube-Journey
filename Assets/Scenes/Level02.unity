@@ -1028,6 +1028,11 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 1197499415}
+    - target: {fileID: 2655444592195630700, guid: bc1bddce28f989f449b48d7f20db8aa2,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1197499415}
     - target: {fileID: 2655444593060863664, guid: bc1bddce28f989f449b48d7f20db8aa2,
         type: 3}
       propertyPath: m_Name
