@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public float nextLevelDelay = .25f;
 
     public GameObject endLevelUI;
+    public Score score;
 
     public bool GameEnded { private set; get; } = false;
 
@@ -15,29 +16,47 @@ public class GameManager : MonoBehaviour
         if(!GameEnded)
         {
             GameEnded = true;
-            PlayerPrefs.SetInt(SceneManager.GetActiveScene().buildIndex.ToString() + "_" + player.location.z);
+            SaveScore();
             Invoke("Restart", restartDelay);
         }
     }
 
+    void SaveScore()
+    {
+        if (PlayerPrefs.GetInt(SceneManager.GetActiveScene().buildIndex.ToString()) < score.score)
+            PlayerPrefs.SetInt(SceneManager.GetActiveScene().buildIndex.ToString(), score.score);
+    }
+
     internal void EndLevel()
     {
-        Invoke("_endLevel", nextLevelDelay);
+        if (!GameEnded)
+        {
+            GameEnded = true;
+            score.LevelComplete();
+            score.Update();
+            SaveScore();
+            Invoke("_endLevel", nextLevelDelay);
+        }
     }
     internal void _endLevel()
     {
-        if (!GameEnded)
-            endLevelUI.SetActive(true);
+        endLevelUI.SetActive(true);
     }
 
     void Update()
     {
-        if(Input.GetKey("r"))
+        if (Input.GetKey("r"))
             Restart();
+        if (Input.GetKey(KeyCode.Escape))
+            Quit();
     }
 
     private void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    private void Quit()
+    {
+        Application.Quit();
     }
 }

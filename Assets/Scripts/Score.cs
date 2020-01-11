@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Score : MonoBehaviour
@@ -6,18 +7,26 @@ public class Score : MonoBehaviour
     public Transform player;
     public Transform end;
     public Slider slider;
-    public Text text;
 
-    public GameManager gm;
+    public int score => Mathf.RoundToInt(_score * 100);
+    private float _score;
+
+    public GameManager gameManager;
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        if (!gm.GameEnded)
+        if (!gameManager.GameEnded)
         {
             float perc = player.position.z / end.position.z;
-            slider.value = perc > 1 ? 1 : perc;
-            text.text = (perc > 1 ? 100 : perc * 100).ToString("0") + " / 100";
+            _score = perc > 1 ? 1 : perc;
         }
+        slider.value = _score;
+        GetComponent<Text>().text = score + " / 100";
+    }
+
+    public void LevelComplete()
+    {
+        _score = 1;
     }
 }

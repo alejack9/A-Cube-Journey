@@ -1,11 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Welcome : MonoBehaviour
 {
-    public void StartGame()
+    public void ResetStats()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        PlayerPrefs.DeleteAll();
+        HighScoreChecker[] objs = FindObjectsOfType<HighScoreChecker>();
+        foreach(var obj in objs)
+            obj.Start();
     }
 
     public void Level1()
