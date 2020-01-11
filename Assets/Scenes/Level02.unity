@@ -907,7 +907,7 @@ GameObject:
   m_Layer: 0
   m_Name: END
   m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1140,6 +1140,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc1bddce28f989f449b48d7f20db8aa2, type: 3}
+--- !u!1 &1067615517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2655444593795083092, guid: bc1bddce28f989f449b48d7f20db8aa2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1067615516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1067615518 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2655444592195630700, guid: bc1bddce28f989f449b48d7f20db8aa2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1067615516}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78e668277a98ac49bde4d6cf1365eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1147431009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1350,7 +1368,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartDelay: 1.5
   nextLevelDelay: 0.25
-  endLevelUI: {fileID: 0}
+  endLevelUI: {fileID: 1067615517}
+  score: {fileID: 1067615518}
 --- !u!4 &1197499416
 Transform:
   m_ObjectHideFlags: 0
